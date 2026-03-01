@@ -1,0 +1,41 @@
+name: CI/CD Pipeline
+
+# Налаштування тригерів: коли запускати пайплайн
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  # Завдання для збірки та тестування (CI)
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest # Використовуємо стандартний образ Linux
+    
+    steps:
+      # Крок 1: Отримання коду з репозиторію
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      # Крок 2: Налаштування середовища Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Встановлюємо стабільну версію Node.js
+          
+      # Крок 3: Встановлення залежностей проєкту
+      - name: Install dependencies
+        run: npm ci # Чисте встановлення пакетів з package-lock.json
+        
+      # Крок 4: Перевірка якості коду (Linting)
+      - name: Run linter
+        run: npm run lint
+        
+      # Крок 5: Запуск юніт-тестів
+      - name: Run unit tests
+        run: npm run test:unit
