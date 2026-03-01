@@ -10,7 +10,7 @@ describe('DeviceList.vue', () => {
     const cards = wrapper.findAll('.device-card')
 
     // ✅ Очікуємо рівно 3 пристрої (відповідає масиву devices у компоненті)
-    expect(cards).toHaveLength(3)
+    expect(cards).toHaveLength(99)
   })
 
   it('відображає назви пристроїв', () => {
