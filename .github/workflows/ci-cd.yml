@@ -42,4 +42,4 @@ jobs:
 
       # Крок 6: Перевірка роботи секретів
       - name: Check secret masking
-        run: echo "Мій секретний токен: ${{ secrets.IOT_API_TOKEN }}"
+        run: "Мій секретний токен: ${{ secrets.IOT_API_TOKEN }}"
