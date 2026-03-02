@@ -39,3 +39,7 @@ jobs:
       # Крок 5: Запуск юніт-тестів
       - name: Run unit tests
         run: npm run test:unit
+
+      # Крок 6: Перевірка роботи секретів
+      - name: Check secret masking
+        run: echo "Мій секретний токен: ${{ secrets.IOT_API_TOKEN }}"
